@@ -2,25 +2,29 @@
 
 ## Sumário
 
-- [Crie seus próprios agentes personalizados (.agent.md)](#crie-seus-próprios-agentes-personalizados-agentmd)
-  - [Agent Skills — (.agent.md + skills)](#agent-skills--agentmd--skills)
-  - [Como o Copilot descobre e aplica automaticamente?](#como-o-copilot-descobre-e-aplica-automaticamente)
-  - [Onde podem ser armazenadas?](#onde-podem-ser-armazenadas)
+- [O que é cada primitivo](#o-que-é-cada-primitivo)
+  - [Agent (.agent.md)](#agent-agentmd)
+    - [Crie seus próprios agentes personalizados (.agent.md)](#crie-seus-próprios-agentes-personalizados-agentmd)
+  - [Skill (SKILL.md + pasta)](#skill-skillmd--pasta)
+    - [Estrutura básica — skills](#estrutura-básica--skills)
+    - [Como o Copilot descobre e aplica automaticamente?](#como-o-copilot-descobre-e-aplica-automaticamente)
+    - [Onde podem ser armazenadas?](#onde-podem-ser-armazenadas)
     - [Diferença entre ~/.copilot/ e ~/.agents/](#diferença-entre-copilot-e-agents)
     - [Como criar a estrutura no terminal](#como-criar-a-estrutura-no-terminal)
-  - [Diferença: Skill vs Agente vs Prompt](#diferença-skill-vs-agente-vs-prompt)
-    - [Assets bundled (recursos empacotados)](#assets-bundled-recursos-empacotados)
-    - [Isolamento de contexto](#isolamento-de-contexto)
-    - [Restrição de ferramentas](#restrição-de-ferramentas)
-    - [Uso ideal — resumo mental](#uso-ideal--resumo-mental)
-    - [Exemplo concreto dos três juntos](#exemplo-concreto-dos-três-juntos)
-  - [Como criar primitivos](#como-criar-primitivos)
-    - [Para criar do zero](#para-criar-do-zero)
-    - [Para atualizar um existente](#para-atualizar-um-existente)
-    - [Para depurar quando não funciona](#para-depurar-quando-não-funciona)
-    - [Dica principal](#dica-principal)
-  - [Caso de uso: (Skill) de Code Review](#caso-de-uso-skill-de-code-review)
-  - [Caso de uso: (agent, skill e prompt) Projeto Mei Contabilidade](#caso-de-uso-agent-skill-e-prompt-projeto-mei-contabilidade)
+  - [Prompt (.prompt.md)](#prompt-promptmd)
+- [Diferença: Skill vs Agente vs Prompt](#diferença-skill-vs-agente-vs-prompt)
+  - [Assets bundled (recursos empacotados)](#assets-bundled-recursos-empacotados)
+  - [Isolamento de contexto](#isolamento-de-contexto)
+  - [Restrição de ferramentas](#restrição-de-ferramentas)
+  - [Uso ideal — resumo mental](#uso-ideal--resumo-mental)
+  - [Exemplo concreto dos três juntos](#exemplo-concreto-dos-três-juntos)
+- [Como criar primitivos](#como-criar-primitivos)
+  - [Para criar do zero](#para-criar-do-zero)
+  - [Para atualizar um existente](#para-atualizar-um-existente)
+  - [Para depurar quando não funciona](#para-depurar-quando-não-funciona)
+  - [Dica principal](#dica-principal)
+- [Caso de uso: (Skill) de Code Review](#caso-de-uso-skill-de-code-review)
+- [Caso de uso: Projeto Mei Contabilidade](#caso-de-uso-projeto-mei-contabilidade)
 
 ---
 
@@ -253,4 +257,4 @@ ou simplesmente descrever o que quer — o Copilot descobre a skill automaticame
 ### Caso de uso: Projeto Mei Contabilidade
 Projeto criado também como **laboratório prático** para estudar os três primitivos de customização do GitHub Copilot: **Agent**, **Skill** e **Prompt**. Cada um resolve um problema diferente.
 
-repositório: 
+Informações implementação primitivos e repositório: 
