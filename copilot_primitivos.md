@@ -239,4 +239,3 @@ argument-hint: 'Arquivo ou PR para revisar'
 ou simplesmente descrever o que quer — o Copilot descobre a skill automaticamente pela descrição.
 
 ---
-### Caso de uso: (agent, skill e prompt) Projeto Mei Contabilidade
