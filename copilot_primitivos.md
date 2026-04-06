@@ -24,7 +24,13 @@
 
 ---
 
-## Crie seus próprios agentes personalizados (.agent.md)
+### O que é cada primitivo
+
+#### Agent (`.agent.md`)
+Persona especializada com **ferramentas restritas** e **isolamento de contexto**. Quando invocado como subagente, recebe apenas o que o agente pai delega e retorna um único resultado. Ideal para enforçar que o Copilot nunca faça algo fora do escopo definido.
+
+
+##### Crie seus próprios agentes personalizados (.agent.md)
 Você pode definir agentes Copilot especializados como arquivos .agent.md dentro do repositório. 
 
 Esses agentes têm:
@@ -37,14 +43,16 @@ Esses agentes têm:
 - Eles aparecem no seletor de agentes e ficam disponíveis para toda a equipe.
 
 ---
-### Agent Skills — (.agent.md + skills)
+#### Skill (`SKILL.md` + pasta)
+**Pasta de instruções + scripts + recursos** carregados sob demanda. O carregamento é progressivo:
+1. **Descoberta (~100 tokens)**: lê `name` e `description`
+2. **Instruções (<5000 tokens)**: carrega o corpo do `SKILL.md` quando relevante
+3. **Recursos**: arquivos adicionais só carregam quando referenciados
 
-O que são Skills?
-Como funciona e caso de uso
+Ideal para workflows repetíveis que precisam de scripts ou documentação de apoio empacotados junto.
 
-Skills são pastas de instruções + scripts + recursos que o agente carrega sob demanda.
 
- A estrutura básica é:
+##### Estrutura básica — skills
  ``` 
     .github/skills/<nome-da-skill>/
     ├── SKILL.md           # Arquivo principal (obrigatório)
@@ -54,7 +62,7 @@ Skills são pastas de instruções + scripts + recursos que o agente carrega sob
  ```
 
 ---
-### Como o Copilot descobre e aplica automaticamente?
+##### Como o Copilot descobre e aplica automaticamente?
 O carregamento é progressivo em 3 etapas:
 
 1. Descoberta (~100 tokens): O agente lê apenas name e description de cada skill
@@ -65,7 +73,7 @@ Por isso o campo description é crítico — ele é o gatilho de descoberta.
 Por isso o campo description é crítico — ele é o gatilho de descoberta.
 
 ---
-### Onde podem ser armazenadas?
+##### Onde podem ser armazenadas?
 
 | Caminho | Escopo |
 |---|---|
@@ -74,7 +82,7 @@ Por isso o campo description é crítico — ele é o gatilho de descoberta.
 | `~/.copilot/skills/<nome>/` | Perfil pessoal (legado) |
 | `~/.agents/skills/<nome>/` | Perfil pessoal (recomendado) |
 
-#### Diferença entre `~/.copilot/` e `~/.agents/`
+##### Diferença entre `~/.copilot/` e `~/.agents/`
 
 | | `~/.copilot/skills/` | `~/.agents/skills/` |
 |---|---|---|
@@ -84,7 +92,7 @@ Por isso o campo description é crítico — ele é o gatilho de descoberta.
 
 > Para skills novas, prefira `~/.agents/skills/` — é o path alinhado com o sistema de primitivos.
 
-#### Como criar a estrutura no terminal
+##### Como criar a estrutura no terminal
 
 Perfil pessoal (`~/.agents/skills/`):
 
@@ -98,6 +106,9 @@ Dentro do projeto (`.github/skills/`):
 mkdir -p .github/skills/<nome-da-skill>/{scripts,references,assets} && touch .github/skills/<nome-da-skill>/SKILL.md
 ```
 
+---
+#### Prompt (`.prompt.md`)
+Tarefa única com **inputs parametrizados**. Aparece como comando `/nome` no chat. Não empacota assets, não restringe ferramentas. Ideal para operações pontuais com variáveis.
 
 ---
 ### Diferença: Skill vs Agente vs Prompt
@@ -239,3 +250,7 @@ argument-hint: 'Arquivo ou PR para revisar'
 ou simplesmente descrever o que quer — o Copilot descobre a skill automaticamente pela descrição.
 
 ---
+### Caso de uso: Projeto Mei Contabilidade
+Projeto criado também como **laboratório prático** para estudar os três primitivos de customização do GitHub Copilot: **Agent**, **Skill** e **Prompt**. Cada um resolve um problema diferente.
+
+repositório: 
